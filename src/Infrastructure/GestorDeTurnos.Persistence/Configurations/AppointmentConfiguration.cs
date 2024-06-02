@@ -17,10 +17,11 @@ namespace GestorDeTurnos.Persistence.Configurations
                    .HasDefaultValueSql("GetDate()")
                    .IsRequired();
 
-            builder.HasOne<CustomIdentityUser>()
+            /*builder.HasOne<CustomIdentityUser>()
                    .WithMany()
                    .HasForeignKey(e => e.UserId)
                    .OnDelete(DeleteBehavior.Restrict);
+            */
 
             builder.HasOne(e => e.Establishment)
                    .WithMany(e => e.Appointments)

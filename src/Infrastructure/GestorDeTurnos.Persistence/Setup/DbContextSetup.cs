@@ -10,7 +10,7 @@ namespace GestorDeTurnos.Persistence.Setup
         {
             Action<DbContextOptionsBuilder> OptionsBuilder = (options) =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("GestorDeTurnosConnection"),
+                options.UseSqlServer(configuration.GetConnectionString("GDTConnection"),
                     optionAction =>
                     {
                         optionAction.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
