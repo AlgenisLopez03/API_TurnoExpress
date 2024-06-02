@@ -17,10 +17,11 @@ namespace GestorDeTurnos.Persistence.Configurations
             builder.Property(e => e.Description).HasMaxLength(1000);
             builder.Property(e => e.ProfileImage).HasMaxLength(255);
 
-            builder.HasOne<CustomIdentityUser>()
+            /*builder.HasOne<CustomIdentityUser>()
                    .WithMany()
                    .HasForeignKey(e => e.UserId)
                    .OnDelete(DeleteBehavior.Restrict);
+            */
         }
     }
 }

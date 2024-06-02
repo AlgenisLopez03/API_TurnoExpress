@@ -33,7 +33,7 @@ namespace GestorDeTurnos.Identity
             {
                 services.AddDbContext<IdentityContext>(option =>
                 {
-                    option.UseSqlServer(configuration.GetConnectionString("GestorDeTurnosIdentityConnection"),
+                    option.UseSqlServer(configuration.GetConnectionString("GDTIdentityConnection"),
                         optionAction => optionAction.MigrationsAssembly(typeof(IdentityContext).Assembly.FullName));
                 });
             }
