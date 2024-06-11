@@ -1,4 +1,5 @@
 ﻿using GestorDeTurnos.Application.Interfaces;
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
 namespace GestorDeTurnos.Application.Dtos.Establishment
@@ -23,7 +24,8 @@ namespace GestorDeTurnos.Application.Dtos.Establishment
         [Required]
         public string Description { get; set; }
 
-        [Required]
-        public string ProfileImage { get; set; }
+        public IFormFile? ImageFile { get; set; }
+
+        public string? ProfileImage { get; set; }
     }
 }

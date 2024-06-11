@@ -1,4 +1,6 @@
-﻿using GestorDeTurnos.Application.Interfaces.Services;
+﻿using GestorDeTurnos.Application.Helpers;
+using GestorDeTurnos.Application.Interfaces.Helpers;
+using GestorDeTurnos.Application.Interfaces.Services;
 using GestorDeTurnos.Application.Services;
 using GestorDeTurnos.Application.Setups;
 using GestorDeTurnos.Application.Setups.Swagger;
@@ -23,13 +25,13 @@ namespace GestorDeTurnos.Application
             services.AddSwaggerGen(SwaggerGenSetup.Configure);
 
             #region Dependency Injection
-
             services.AddScoped<IAppointmentService, AppointmentService>();
             services.AddScoped<IEstablishmentService, EstablishmentService>();
             services.AddScoped<IReportService, ReportService>();
             services.AddScoped<IReviewService, ReviewService>();
             services.AddScoped<IServiceService, ServiceService>();
 
+            services.AddScoped(typeof(IFileManager<>), typeof(FileManager<>));
             #endregion Dependency Injection
         }
     }
