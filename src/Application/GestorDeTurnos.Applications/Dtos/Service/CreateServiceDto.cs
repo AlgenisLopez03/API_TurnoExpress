@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace GestorDeTurnos.Application.Dtos.Service
 {
@@ -11,7 +12,9 @@ namespace GestorDeTurnos.Application.Dtos.Service
         public string ServiceName { get; set; }
 
         [Required]
-        public string ServiceImage { get; set; }
+        public IFormFile ImageFile { get; set; }
+
+        public string? ServiceImage { get; set; }
 
         [Required]
         public int Duration { get; set; }

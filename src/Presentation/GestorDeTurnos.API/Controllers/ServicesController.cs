@@ -1,5 +1,7 @@
 ﻿using Asp.Versioning;
 using GestorDeTurnos.Application.Dtos.Service;
+using GestorDeTurnos.Application.Helpers;
+using GestorDeTurnos.Application.Interfaces.Helpers;
 using GestorDeTurnos.Application.Interfaces.Services;
 using GestorDeTurnos.Application.Pagination;
 using GestorDeTurnos.Application.Specification;
@@ -16,10 +18,12 @@ namespace GestorDeTurnos.API.Controllers
     public class ServicesController : ControllerBase
     {
         private readonly IServiceService _serviceService;
+        private readonly IFileManager<Service> _fileManager;
 
-        public ServicesController(ApplicationDbContext context, IServiceService serviceService)
+        public ServicesController(ApplicationDbContext context, IServiceService serviceService, IFileManager<Service> fileManager)
         {
             _serviceService = serviceService;
+            _fileManager = fileManager;
         }
 
         [HttpGet]
@@ -38,24 +42,40 @@ namespace GestorDeTurnos.API.Controllers
             return Ok(response);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutService(int id, UpdateServiceDto request)
-        {
-            await _serviceService.UpdateAsync(id, request);
-            return NoContent();
-        }
-
         [HttpPost]
         public async Task<ActionResult> PostService(CreateServiceDto service)
         {
+            var imageName = string.Empty;
+
+            if (service.ImageFile != null)
+            {
+                imageName = await _fileManager.SaveAsync(service.ImageFile);
+            }
+
+            service.ServiceImage = imageName;
+
             var newService = await _serviceService.CreateAsync(service);
             var response = new ApiResponse<Service>(newService);
             return CreatedAtAction("GetService", new { id = newService.Id }, response);
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutService(int id, [FromForm] UpdateServiceDto request)
+        {
+            if (request.ImageFile != null)
+            {
+                request.ServiceImage = await _fileManager.UpdateAsync(request.ImageFile, request.ServiceImage);
+            }
+            await _serviceService.UpdateAsync(id, request);
+            return NoContent();
+        }
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteService(int id)
         {
+            var service = await _serviceService.GetByIdAsync(id);
+            _fileManager.Delete(service.ServiceImage);
+
             await _serviceService.DeleteAsync(id);
             return NoContent();
         }
