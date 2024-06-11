@@ -9,6 +9,16 @@ namespace GestorDeTurnos.Application.Specification
     {
         public EstablishmentSpecification(EstablishmentFilterAndPaginationDto request) : base(request)
         {
+            #region UserID
+
+            if (request.UserID != null)
+            {
+                Expression<Func<Establishment, bool>> expression = i => i.UserId.Equals(request.UserID);
+                Criteria = Criteria is null ? expression : Criteria.And(expression);
+            }
+
+            #endregion UserID
+
             #region BusinessName
 
             if (request.BusinessName != null)

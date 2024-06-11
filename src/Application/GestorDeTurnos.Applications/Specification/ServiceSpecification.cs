@@ -19,6 +19,16 @@ namespace GestorDeTurnos.Application.Specification
 
             #endregion Establishment
 
+            #region EstablishmentID
+
+            if (request.EstablishmentID != null)
+            {
+                Expression<Func<Service, bool>> expression = i => i.Establishment.Id.Equals(request.EstablishmentID);
+                Criteria = Criteria is null ? expression : Criteria.And(expression);
+            }
+
+            #endregion EstablishmentID
+
             #region Service
 
             if (request.Service != null)
