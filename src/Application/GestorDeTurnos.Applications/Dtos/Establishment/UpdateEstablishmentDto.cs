@@ -26,6 +26,7 @@ namespace GestorDeTurnos.Application.Dtos.Establishment
 
         public IFormFile? ImageFile { get; set; }
 
+        [Required]
         public string? ProfileImage { get; set; }
     }
 }
