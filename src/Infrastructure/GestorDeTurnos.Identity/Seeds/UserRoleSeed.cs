@@ -15,12 +15,27 @@ namespace GestorDeTurnos.Identity.Seeds
         {
             new IdentityUserRole<string>
             {
-                UserId = UserSeed.DefaultValues.First(x => x.UserName == "johnDoe").Id,
+                UserId = UserSeed.DefaultValues.First(x => x.UserName == "propietario").Id,
+                RoleId = RoleSeed.DefaultValues.First(x => x.Name == Role.Custom).Id
+            },
+            new IdentityUserRole<string>
+            {
+                UserId = UserSeed.DefaultValues.First(x => x.UserName == "propietario").Id,
                 RoleId = RoleSeed.DefaultValues.First(x => x.Name == Role.Owner).Id
             },
             new IdentityUserRole<string>
             {
-                UserId = UserSeed.DefaultValues.First(x => x.UserName == "jonhSmith").Id,
+                UserId = UserSeed.DefaultValues.First(x => x.UserName == "empleado").Id,
+                RoleId = RoleSeed.DefaultValues.First(x => x.Name == Role.Custom).Id
+            },
+            new IdentityUserRole<string>
+            {
+                UserId = UserSeed.DefaultValues.First(x => x.UserName == "empleado").Id,
+                RoleId = RoleSeed.DefaultValues.First(x => x.Name == Role.Employee).Id
+            },
+            new IdentityUserRole<string>
+            {
+                UserId = UserSeed.DefaultValues.First(x => x.UserName == "cliente").Id,
                 RoleId = RoleSeed.DefaultValues.First(x => x.Name == Role.Custom).Id
             },
         };

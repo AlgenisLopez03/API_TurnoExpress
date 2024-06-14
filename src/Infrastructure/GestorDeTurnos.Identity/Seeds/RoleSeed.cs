@@ -12,17 +12,23 @@ namespace GestorDeTurnos.Identity.Seeds
         /// Gets the default values for Identity roles.
         /// </summary>
         public static readonly IReadOnlyList<IdentityRole<string>> DefaultValues = new List<IdentityRole<string>>
-    {
-        new IdentityRole
         {
-            Name = Role.Owner,
-            NormalizedName = Role.Owner.ToUpper()
-        },
-        new IdentityRole
-        {
-            Name = Role.Custom,
-            NormalizedName = Role.Custom.ToUpper()
-        }
-    };
+            new IdentityRole
+            {
+                Name = Role.Custom,
+                NormalizedName = Role.Custom.ToUpper()
+            },
+            new IdentityRole
+            {
+                Name = Role.Owner,
+                NormalizedName = Role.Owner.ToUpper()
+            },
+            new IdentityRole
+            {
+                Name = Role.Employee,
+                NormalizedName = Role.Employee.ToUpper()
+            }
+
+        };
     }
 }

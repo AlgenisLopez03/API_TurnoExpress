@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Azure.Core;
 using GestorDeTurnos.Application.Configs;
+using GestorDeTurnos.Application.Constants;
 using GestorDeTurnos.Application.Dtos.Auth;
 using GestorDeTurnos.Application.Dtos.User;
 using GestorDeTurnos.Application.Exceptions;
@@ -8,6 +10,7 @@ using GestorDeTurnos.Application.Interfaces.Services;
 using GestorDeTurnos.Application.Wrappers;
 using GestorDeTurnos.Identity.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -81,8 +84,9 @@ namespace GestorDeTurnos.Identity.Services
             {
                 Id = user.Id,
                 AccessToken = accessToken,
-                Email = user.Email,
                 UserName = user.UserName,
+                ProfileImage = user.ProfileImage,
+                Email = user.Email,
                 IsVerified = user.EmailConfirmed,
                 Roles = roleList,
                 ExpiresIn = _jwtConfig.DurationInMinutes
@@ -95,6 +99,76 @@ namespace GestorDeTurnos.Identity.Services
         }
 
         /// <summary>
+        /// Retrieves a user's details based on their ID.
+        /// </summary>
+        /// <param name="id">The ID of the user.</param>
+        /// <returns>An ApiResponse containing the user's detail response data.</returns>
+        public async Task<ApiResponse<UserDetailResponse>> GetUserAsync(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                throw new BadRequestException($"No Accounts Registered with id: {id}.");
+            }
+
+            var roleList = (List<string>)await _userManager.GetRolesAsync(user);
+
+
+            var userDetail = new UserDetailResponse()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                ProfileImage = user.ProfileImage,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Roles = roleList
+            };
+
+            var response = new ApiResponse<UserDetailResponse>(userDetail);
+            response.Message = "Successs user retrieve.";
+
+            return response;
+        }
+
+        /// <summary>
+        /// Retrieves a user's details based on their username.
+        /// </summary>
+        /// <param name="userName">The username of the user.</param>
+        /// <returns>An ApiResponse containing the user's detail response data.</returns>
+        public async Task<ApiResponse<UserDetailResponse>> GetUserByUserNameAsync(string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+
+            if (user == null)
+            {
+                throw new BadRequestException($"No Accounts Registered with username: {userName}.");
+            }
+
+            var roleList = (List<string>)await _userManager.GetRolesAsync(user);
+
+
+            var userDetail = new UserDetailResponse()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                ProfileImage = user.ProfileImage,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Roles = roleList
+            };
+
+            var response = new ApiResponse<UserDetailResponse>(userDetail);
+            response.Message = "Successs user retrieve.";
+
+            return response;
+        }
+
+        /// <summary>
         /// Registers a new user into the system.
         /// </summary>
         /// <param name="userCreateRequest">The user registration data.</param>
@@ -102,15 +176,64 @@ namespace GestorDeTurnos.Identity.Services
 
         public async Task<ApiResponse> CreateUserAccountAsync(UserCreateRequest userCreateRequest)
         {
+            var response = new ApiResponse();
+
+            var userWithSameUserName = await _userManager.FindByNameAsync(userCreateRequest.UserName);
+
+            if (userWithSameUserName != null)
+            {
+                throw new BadRequestException($"The username {userCreateRequest.UserName} is already in use. Please choose a differente one.");
+            }
+
+            var userWithSameEmail = await _userManager.FindByEmailAsync(userCreateRequest.Email);
+
+            if (userWithSameEmail != null)
+            {
+                throw new BadRequestException($"The email address {userCreateRequest.Email} is already in use. Please choose a different one.");
+            }
+
             var newUser = _mapper.Map<CustomIdentityUser>(userCreateRequest);
             newUser.EmailConfirmed = true;
 
             var reuslt = await _userManager.CreateAsync(newUser, userCreateRequest.Password);
-            var response = new ApiResponse();
 
             if (reuslt.Succeeded)
             {
-                response.Message = "User registered Succesulfully";
+                await _userManager.AddToRoleAsync(newUser, Role.Custom.ToString());
+                response.Message = "User registered Succesfully";
+            }
+            else
+            {
+                response.Message = "An error occurred";
+            }
+
+            return response;
+        }
+
+        /// <summary>
+        /// Update the information of an user into the system.
+        /// </summary>
+        /// <param name="userUpdateRequest">The user data to update.</param>
+        /// <returns>An ApiResponse indicating the result of the updating process.</returns>
+
+        public async Task<ApiResponse> UpdateUserAccountAsync(UserUpdateRequest userUpdateRequest)
+        {
+            var response = new ApiResponse();
+
+            var user = await _userManager.FindByIdAsync(userUpdateRequest.Id);
+
+            if(user == null)
+            {
+                response.Message = $"No existe usuario registrado con {userUpdateRequest.Id}";
+            }
+
+            _mapper.Map(userUpdateRequest, user);
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                response.Message = "User Updated Succesfully";
             }
             else
             {

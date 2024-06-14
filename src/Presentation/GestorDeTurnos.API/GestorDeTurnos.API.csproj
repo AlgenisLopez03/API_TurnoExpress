@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <Folder Include="Uploads\" />
+    <Folder Include="Uploads\CustomIdentityUser\" />
     <Folder Include="Uploads\Establishment\" />
     <Folder Include="Uploads\Service\" />
   </ItemGroup>

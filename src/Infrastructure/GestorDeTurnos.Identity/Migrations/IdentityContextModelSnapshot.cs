@@ -17,7 +17,7 @@ namespace GestorDeTurnos.Identity.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.5")
+                .HasAnnotation("ProductVersion", "8.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -70,6 +70,9 @@ namespace GestorDeTurnos.Identity.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ProfileImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -95,39 +98,63 @@ namespace GestorDeTurnos.Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1d1c319d-fb5f-4666-97a6-91f9cb480a30",
+                            Id = "ec3cd357-0298-4602-abb1-5effcf233389",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4f59b174-ac03-4a54-98d7-dd17c97a811a",
-                            Email = "admin@gmail.com",
+                            ConcurrencyStamp = "f5592abb-fa47-4dcc-b982-19b2e0af8a55",
+                            Email = "propietario@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "John",
                             LastName = "Doe",
                             LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@GMAIL.COM",
-                            NormalizedUserName = "JOHNDOE",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHenCib1KiNJmxBxMy/ZvUCRoTnCq8lenVjmhQ8jm25jqjBEQf85Dy4dk8pv8HME5A==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "401ab627-d98f-4539-8824-ef347dee7ed3",
+                            NormalizedEmail = "PROPIETARIO@GMAIL.COM",
+                            NormalizedUserName = "PROPIETARIO",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDMYgJH+FSW2hwytLjZVkDxD4JNaun88qWykBB3oMtWDPJq3rY2xglHEc/EmvZqYTQ==",
+                            PhoneNumber = "000-000-0001",
+                            PhoneNumberConfirmed = true,
+                            ProfileImage = "",
+                            SecurityStamp = "56f125f2-2e9f-43ed-a9d4-22f0f6806eb0",
                             TwoFactorEnabled = false,
-                            UserName = "johnDoe"
+                            UserName = "propietario"
                         },
                         new
                         {
-                            Id = "8e6a787b-f623-43a7-97a3-0a181edf3640",
+                            Id = "95987a31-7bd5-4bb0-a888-f2cc06108ec1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "24a9d02b-e6ab-4f08-b7db-220bae29f7e2",
-                            Email = "basic@gmail.com",
+                            ConcurrencyStamp = "8be51a70-45c7-41a2-abb6-c4da6f570dda",
+                            Email = "empleado@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "John",
                             LastName = "Smith",
                             LockoutEnabled = false,
-                            NormalizedEmail = "BASIC@GMAIL.COM",
-                            NormalizedUserName = "JONHSMITH",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAMVo324gIIZTFAxB0Kpw8s6QKUYWfsMb0/HFy5e74FTVA3aDrA+X5hYqks4aRvpLA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "95fd85f3-9ab7-4297-ba4a-6ea81b5233e2",
+                            NormalizedEmail = "EMPLEADO@GMAIL.COM",
+                            NormalizedUserName = "EMPLEADO",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAxLFxvCrGChB03uXwDK4dKgm5o20hUcj548OV90rjbQVYgAtwsRdAcRPkZvVagHSQ==",
+                            PhoneNumber = "000-000-0002",
+                            PhoneNumberConfirmed = true,
+                            ProfileImage = "",
+                            SecurityStamp = "5641b136-e856-48a0-aa05-dd1f36cf05d2",
                             TwoFactorEnabled = false,
-                            UserName = "jonhSmith"
+                            UserName = "empleado"
+                        },
+                        new
+                        {
+                            Id = "7bfc5c75-a9fa-4623-8e0c-4c1a2dc8cbda",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "3ae06251-fcac-4477-8344-761a88359270",
+                            Email = "cliente@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "John",
+                            LastName = "Tie",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "CLIENTE@GMAIL.COM",
+                            NormalizedUserName = "CLIENTE",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMYf6NtyHMjvNWl3gMZaGhuixSTbmYj1UIh47UBqwAGXRbCMp8hQQdye8T0j2BKa9w==",
+                            PhoneNumber = "000-000-0000",
+                            PhoneNumberConfirmed = true,
+                            ProfileImage = "",
+                            SecurityStamp = "7a5c3f6b-b7de-4163-b92a-dd2aa800e568",
+                            TwoFactorEnabled = false,
+                            UserName = "cliente"
                         });
                 });
 
@@ -160,15 +187,21 @@ namespace GestorDeTurnos.Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "04d1d7d7-b135-4085-87de-616a811151c1",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            Id = "96002ed6-73e4-4355-9b22-6b7d4c6bed53",
+                            Name = "Cliente",
+                            NormalizedName = "CLIENTE"
                         },
                         new
                         {
-                            Id = "9790b4d4-1a1a-4c8f-9711-949f5dc0a9a1",
-                            Name = "Basic",
-                            NormalizedName = "BASIC"
+                            Id = "d9b88570-5675-4112-afb5-302a6e40eb80",
+                            Name = "Propietario",
+                            NormalizedName = "PROPIETARIO"
+                        },
+                        new
+                        {
+                            Id = "31d211a3-f5cf-4fa1-b615-265d63f00646",
+                            Name = "Empleado",
+                            NormalizedName = "EMPLEADO"
                         });
                 });
 
@@ -261,13 +294,28 @@ namespace GestorDeTurnos.Identity.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "1d1c319d-fb5f-4666-97a6-91f9cb480a30",
-                            RoleId = "04d1d7d7-b135-4085-87de-616a811151c1"
+                            UserId = "ec3cd357-0298-4602-abb1-5effcf233389",
+                            RoleId = "96002ed6-73e4-4355-9b22-6b7d4c6bed53"
                         },
                         new
                         {
-                            UserId = "8e6a787b-f623-43a7-97a3-0a181edf3640",
-                            RoleId = "9790b4d4-1a1a-4c8f-9711-949f5dc0a9a1"
+                            UserId = "ec3cd357-0298-4602-abb1-5effcf233389",
+                            RoleId = "d9b88570-5675-4112-afb5-302a6e40eb80"
+                        },
+                        new
+                        {
+                            UserId = "95987a31-7bd5-4bb0-a888-f2cc06108ec1",
+                            RoleId = "96002ed6-73e4-4355-9b22-6b7d4c6bed53"
+                        },
+                        new
+                        {
+                            UserId = "95987a31-7bd5-4bb0-a888-f2cc06108ec1",
+                            RoleId = "31d211a3-f5cf-4fa1-b615-265d63f00646"
+                        },
+                        new
+                        {
+                            UserId = "7bfc5c75-a9fa-4623-8e0c-4c1a2dc8cbda",
+                            RoleId = "96002ed6-73e4-4355-9b22-6b7d4c6bed53"
                         });
                 });
 

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GestorDeTurnos.Identity.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,6 +34,7 @@ namespace GestorDeTurnos.Identity.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProfileImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -165,17 +166,19 @@ namespace GestorDeTurnos.Identity.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "04d1d7d7-b135-4085-87de-616a811151c1", null, "Admin", "ADMIN" },
-                    { "9790b4d4-1a1a-4c8f-9711-949f5dc0a9a1", null, "Basic", "BASIC" }
+                    { "31d211a3-f5cf-4fa1-b615-265d63f00646", null, "Empleado", "EMPLEADO" },
+                    { "96002ed6-73e4-4355-9b22-6b7d4c6bed53", null, "Cliente", "CLIENTE" },
+                    { "d9b88570-5675-4112-afb5-302a6e40eb80", null, "Propietario", "PROPIETARIO" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfileImage", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1d1c319d-fb5f-4666-97a6-91f9cb480a30", 0, "4f59b174-ac03-4a54-98d7-dd17c97a811a", "admin@gmail.com", true, "John", "Doe", false, null, "ADMIN@GMAIL.COM", "JOHNDOE", "AQAAAAIAAYagAAAAEHenCib1KiNJmxBxMy/ZvUCRoTnCq8lenVjmhQ8jm25jqjBEQf85Dy4dk8pv8HME5A==", null, false, "401ab627-d98f-4539-8824-ef347dee7ed3", false, "johnDoe" },
-                    { "8e6a787b-f623-43a7-97a3-0a181edf3640", 0, "24a9d02b-e6ab-4f08-b7db-220bae29f7e2", "basic@gmail.com", true, "John", "Smith", false, null, "BASIC@GMAIL.COM", "JONHSMITH", "AQAAAAIAAYagAAAAEAMVo324gIIZTFAxB0Kpw8s6QKUYWfsMb0/HFy5e74FTVA3aDrA+X5hYqks4aRvpLA==", null, false, "95fd85f3-9ab7-4297-ba4a-6ea81b5233e2", false, "jonhSmith" }
+                    { "7bfc5c75-a9fa-4623-8e0c-4c1a2dc8cbda", 0, "3ae06251-fcac-4477-8344-761a88359270", "cliente@gmail.com", true, "John", "Tie", false, null, "CLIENTE@GMAIL.COM", "CLIENTE", "AQAAAAIAAYagAAAAEMYf6NtyHMjvNWl3gMZaGhuixSTbmYj1UIh47UBqwAGXRbCMp8hQQdye8T0j2BKa9w==", "000-000-0000", true, "", "7a5c3f6b-b7de-4163-b92a-dd2aa800e568", false, "cliente" },
+                    { "95987a31-7bd5-4bb0-a888-f2cc06108ec1", 0, "8be51a70-45c7-41a2-abb6-c4da6f570dda", "empleado@gmail.com", true, "John", "Smith", false, null, "EMPLEADO@GMAIL.COM", "EMPLEADO", "AQAAAAIAAYagAAAAEAxLFxvCrGChB03uXwDK4dKgm5o20hUcj548OV90rjbQVYgAtwsRdAcRPkZvVagHSQ==", "000-000-0002", true, "", "5641b136-e856-48a0-aa05-dd1f36cf05d2", false, "empleado" },
+                    { "ec3cd357-0298-4602-abb1-5effcf233389", 0, "f5592abb-fa47-4dcc-b982-19b2e0af8a55", "propietario@gmail.com", true, "John", "Doe", false, null, "PROPIETARIO@GMAIL.COM", "PROPIETARIO", "AQAAAAIAAYagAAAAEDMYgJH+FSW2hwytLjZVkDxD4JNaun88qWykBB3oMtWDPJq3rY2xglHEc/EmvZqYTQ==", "000-000-0001", true, "", "56f125f2-2e9f-43ed-a9d4-22f0f6806eb0", false, "propietario" }
                 });
 
             migrationBuilder.InsertData(
@@ -183,8 +186,11 @@ namespace GestorDeTurnos.Identity.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "04d1d7d7-b135-4085-87de-616a811151c1", "1d1c319d-fb5f-4666-97a6-91f9cb480a30" },
-                    { "9790b4d4-1a1a-4c8f-9711-949f5dc0a9a1", "8e6a787b-f623-43a7-97a3-0a181edf3640" }
+                    { "96002ed6-73e4-4355-9b22-6b7d4c6bed53", "7bfc5c75-a9fa-4623-8e0c-4c1a2dc8cbda" },
+                    { "31d211a3-f5cf-4fa1-b615-265d63f00646", "95987a31-7bd5-4bb0-a888-f2cc06108ec1" },
+                    { "96002ed6-73e4-4355-9b22-6b7d4c6bed53", "95987a31-7bd5-4bb0-a888-f2cc06108ec1" },
+                    { "96002ed6-73e4-4355-9b22-6b7d4c6bed53", "ec3cd357-0298-4602-abb1-5effcf233389" },
+                    { "d9b88570-5675-4112-afb5-302a6e40eb80", "ec3cd357-0298-4602-abb1-5effcf233389" }
                 });
 
             migrationBuilder.CreateIndex(

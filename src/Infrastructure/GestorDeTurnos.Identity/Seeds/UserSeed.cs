@@ -19,23 +19,43 @@ namespace GestorDeTurnos.Identity.Seeds
             {
                 FirstName = "John",
                 LastName = "Doe",
-                UserName = "johnDoe",
-                NormalizedUserName = "JOHNDOE",
-                Email = "admin@gmail.com",
-                NormalizedEmail = "ADMIN@GMAIL.COM",
+                UserName = "propietario",
+                NormalizedUserName = "PROPIETARIO",
+                ProfileImage = "",
+                Email = "propietario@gmail.com",
+                NormalizedEmail = "PROPIETARIO@GMAIL.COM",
                 EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(new CustomIdentityUser(), "123Pa$$word")
+                PhoneNumber = "000-000-0001",
+                PhoneNumberConfirmed = true,
+                PasswordHash = hasher.HashPassword(new CustomIdentityUser(), "Pa$$word123")
             },
             new CustomIdentityUser
             {
                 FirstName = "John",
                 LastName = "Smith",
-                UserName = "jonhSmith",
-                NormalizedUserName = "JONHSMITH",
-                Email = "basic@gmail.com",
-                NormalizedEmail = "BASIC@GMAIL.COM",
+                UserName = "empleado",
+                NormalizedUserName = "EMPLEADO",
+                ProfileImage = "",
+                Email = "empleado@gmail.com",
+                NormalizedEmail = "EMPLEADO@GMAIL.COM",
                 EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(new CustomIdentityUser(), "123Pa$$word")
+                PhoneNumber = "000-000-0002",
+                PhoneNumberConfirmed = true,
+                PasswordHash = hasher.HashPassword(new CustomIdentityUser(), "Pa$$word123")
+            },
+            new CustomIdentityUser
+            {
+                FirstName = "John",
+                LastName = "Tie",
+                UserName = "cliente",
+                NormalizedUserName = "CLIENTE",
+                ProfileImage = "",
+                Email = "cliente@gmail.com",
+                NormalizedEmail = "CLIENTE@GMAIL.COM",
+                EmailConfirmed = true,
+                PhoneNumber = "000-000-0000",
+                PhoneNumberConfirmed = true,
+                PasswordHash = hasher.HashPassword(new CustomIdentityUser(), "Pa$$word123")
             }
         };
     }
