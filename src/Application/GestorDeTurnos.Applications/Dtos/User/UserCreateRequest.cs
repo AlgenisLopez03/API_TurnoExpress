@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace GestorDeTurnos.Application.Dtos.User
 {
@@ -12,6 +13,11 @@ namespace GestorDeTurnos.Application.Dtos.User
 
         [Required]
         public string UserName { get; set; }
+
+        [Required]
+        public IFormFile ImageFile { get; set; }
+
+        public string? ProfileImage { get; set; }
 
         [Required]
         [EmailAddress]

@@ -2,7 +2,8 @@
 {
     public static class Role
     {
-        public const string Owner = "Admin";
-        public const string Custom = "Basic";
+        public const string Owner = "Propietario";
+        public const string Employee = "Empleado";
+        public const string Custom = "Cliente";
     }
 }

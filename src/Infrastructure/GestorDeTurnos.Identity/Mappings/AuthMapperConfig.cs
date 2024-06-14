@@ -9,6 +9,8 @@ namespace GestorDeTurnos.Identity.Mappings
         public AuthMapperConfig()
         {
             CreateMap<UserCreateRequest, CustomIdentityUser>().ReverseMap();
+            CreateMap<UserUpdateRequest, CustomIdentityUser>().ReverseMap();
+            CreateMap<UserDetailResponse, CustomIdentityUser>().ReverseMap();
         }
     }
 }
