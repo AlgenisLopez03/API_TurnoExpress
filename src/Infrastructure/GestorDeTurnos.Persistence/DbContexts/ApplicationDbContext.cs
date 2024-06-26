@@ -23,6 +23,12 @@ namespace GestorDeTurnos.Persistence.DbContexts
         public DbSet<Service> Services { get; set; }
         public DbSet<Status> Statuses { get; set; }
 
+        public DbSet<EstablishmentTypes> EstablishmentTypes { get; set; }
+        public DbSet<EstablishmentRoles> EstablishmentRoles { get; set; }
+        public DbSet<JobApplication> JobApplications { get; set; }
+        public DbSet<Employees> Employees { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -33,6 +39,10 @@ namespace GestorDeTurnos.Persistence.DbContexts
             modelBuilder.ApplyConfiguration(new ReviewConfiguration());
             modelBuilder.ApplyConfiguration(new ServiceConfiguration());
             modelBuilder.ApplyConfiguration(new StatusConfiguration());
+            modelBuilder.ApplyConfiguration(new EstablishmentTypesConfiguration());
+            modelBuilder.ApplyConfiguration(new EstablishmentRolesConfiguration());
+            modelBuilder.ApplyConfiguration(new JobApplicationConfiguration());
+            modelBuilder.ApplyConfiguration(new EmployeesConfiguration());
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

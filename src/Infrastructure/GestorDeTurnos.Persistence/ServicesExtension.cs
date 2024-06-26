@@ -31,6 +31,9 @@ namespace GestorDeTurnos.Persistence
             services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             services.AddScoped<IEstablishmentRepository, EstablishmentRepository>();
+            services.AddScoped<IEstablishmentTypeRepository, EstablishmentTypeRepository>();
+            services.AddScoped<IEstablishmentRoleRepository, EstablishmentRoleRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
             services.AddScoped<IReviewRepository, ReviewRepository>();
             services.AddScoped<IReportRepository, ReportRepository>();
