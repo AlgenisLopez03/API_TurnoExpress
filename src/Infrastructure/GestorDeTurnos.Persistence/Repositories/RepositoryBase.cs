@@ -97,6 +97,54 @@ namespace GestorDeTurnos.Persistence.Repositories
             return await _dbContext.Set<TEntity>().FirstOrDefaultAsync(predicate);
         }
 
+        public async Task<List<TEntity>> GetAllWithIncludeAsync(params Expression<Func<TEntity, object>>[] includes)
+        {
+            var query = _dbContext.Set<TEntity>().AsQueryable();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            var entityProperties = _dbContext.Model.FindEntityType(typeof(TEntity)).GetNavigations();
+
+            if (includes.Length == 0)
+            {
+                foreach (var property in entityProperties)
+                {
+                    query = query.Include(property.Name);
+                }
+            }
+
+            return await query.ToListAsync();
+        }
+
+        public async Task<List<TEntity>> GetAllWithIncludeAsync(ISpecification<TEntity> spec, params Expression<Func<TEntity, object>>[] includes)
+        {
+            var query = _dbContext.Set<TEntity>().AsQueryable();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            if (includes.Length == 0)
+            {
+                var entityProperties = _dbContext.Model.FindEntityType(typeof(TEntity)).GetNavigations();
+                foreach (var property in entityProperties)
+                {
+                    query = query.Include(property.Name);
+                }
+            }
+
+            if (spec != null)
+            {
+                query = ApplySpecification(query, spec);
+            }
+
+            return await query.ToListAsync();
+        }
+
         #endregion Public Methods
 
         #region Private Methods

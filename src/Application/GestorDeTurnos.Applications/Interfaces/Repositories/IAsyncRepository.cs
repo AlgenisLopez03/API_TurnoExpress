@@ -21,5 +21,9 @@ namespace GestorDeTurnos.Application.Interfaces.Repositories
         Task UpdateAsync(TEntity entity);
 
         Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
+
+        Task<List<TEntity>> GetAllWithIncludeAsync(ISpecification<TEntity> spec, params Expression<Func<TEntity, object>>[] includes);
+
+        Task<List<TEntity>> GetAllWithIncludeAsync(params Expression<Func<TEntity, object>>[] includes);
     }
 }

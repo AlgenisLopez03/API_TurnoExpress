@@ -13,5 +13,7 @@
 
         public Establishment Establishment { get; set; }
         public ICollection<Appointment> Appointments { get; set; }
+        public ICollection<Employees> Employees { get; set; }
+
     }
 }
