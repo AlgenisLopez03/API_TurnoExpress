@@ -4,7 +4,7 @@ namespace GestorDeTurnos.Application.Dtos.Establishment
 {
     public class EstablishmentFilterAndPaginationDto : PaginationBase
     {
-        public string? UserID { get; set; }
+        public string? UserId { get; set; }
         public string? BusinessName { get; set; }
         public string? Location { get; set; }
         public string? WorkingHours { get; set; }

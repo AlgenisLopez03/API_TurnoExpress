@@ -27,6 +27,9 @@ namespace GestorDeTurnos.Application
             #region Dependency Injection
             services.AddScoped<IAppointmentService, AppointmentService>();
 
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IJobApplicationService, JobApplicationService>();
+
             services.AddScoped<IEstablishmentService, EstablishmentService>();
             services.AddScoped<IEstablishmentRoleService, EstablishmentRoleService>();
             services.AddScoped<IEstablishmentTypeService, EstablishmentTypeService>();

@@ -2,6 +2,7 @@
 {
     public class AppointmentDetailDto
     {
+        public int Id { get; set; }
         public string UserId { get; set; }
         public int EstablishmentId { get; set; }
         public int ServiceId { get; set; }

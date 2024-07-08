@@ -11,9 +11,9 @@ namespace GestorDeTurnos.Application.Specification
         {
             #region UserID
 
-            if (request.UserID != null)
+            if (request.UserId != null)
             {
-                Expression<Func<Establishment, bool>> expression = i => i.UserId.Equals(request.UserID);
+                Expression<Func<Establishment, bool>> expression = i => i.UserId.Equals(request.UserId);
                 Criteria = Criteria is null ? expression : Criteria.And(expression);
             }
 

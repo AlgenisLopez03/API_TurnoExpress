@@ -2,7 +2,10 @@
 
 namespace GestorDeTurnos.Application.Dtos.JobApplication
 {
-    internal class JobApplicationFilterAndPaginationDto : PaginationBase
-    {
+    public class JobApplicationFilterAndPaginationDto : PaginationBase
+    { 
+        public int? EstablishmentId { get; set; }
+        public string? UserId { get; set; }
+        public string? Status { get; set; }
     }
 }
