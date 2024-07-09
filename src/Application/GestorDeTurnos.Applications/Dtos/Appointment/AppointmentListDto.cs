@@ -1,4 +1,6 @@
-﻿namespace GestorDeTurnos.Application.Dtos.Appointment
+﻿using GestorDeTurnos.Application.Enums;
+
+namespace GestorDeTurnos.Application.Dtos.Appointment
 {
     public class AppointmentListDto
     {
@@ -9,6 +11,6 @@
         public int EmployeeId { get; set; }
         public int Position { get; set; }
         public DateTime Date { get; set; }
-        public string Status { get; set; }
+        public int StatusId { get; set; }
     }
 }

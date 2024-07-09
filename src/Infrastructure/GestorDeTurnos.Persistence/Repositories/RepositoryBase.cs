@@ -145,6 +145,11 @@ namespace GestorDeTurnos.Persistence.Repositories
             return await query.ToListAsync();
         }
 
+        public async Task<List<TEntity>> ListAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await _dbContext.Set<TEntity>().Where(predicate).ToListAsync();
+        }
+
         #endregion Public Methods
 
         #region Private Methods

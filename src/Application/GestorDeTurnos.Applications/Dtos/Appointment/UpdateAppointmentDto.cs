@@ -20,10 +20,7 @@ namespace GestorDeTurnos.Application.Dtos.Appointment
         [Required]
         public int EmployeeId { get; set; }
 
-        [Range(1, int.MaxValue)]
-        public int Position { get; set; }
-
         [Required]
-        public string Status { get; set; }
+        public int StatusId { get; set; }
     }
 }
