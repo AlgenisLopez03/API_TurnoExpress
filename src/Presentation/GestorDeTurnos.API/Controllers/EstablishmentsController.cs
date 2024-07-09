@@ -36,7 +36,7 @@ namespace GestorDeTurnos.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ApiResponse<EstablishmentDetailDto>>> GetEstablishment(int id)
         {
-            var data = await _establishmentService.GetByIdProjectedAsync<EstablishmentDetailDto>(id);
+            var data = await _establishmentService.GetByIdProjectedWithIncludesAsync<EstablishmentDetailDto>(id, e => e.Services);
             var response = new ApiResponse<EstablishmentDetailDto?>(data);
             return Ok(response);
         }

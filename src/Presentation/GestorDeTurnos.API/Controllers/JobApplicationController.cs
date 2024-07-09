@@ -44,7 +44,7 @@ namespace GestorDeTurnos.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ApiResponse<JobApplicationDetailDto>>> GetJobApplication(int id)
         {
-            var data = await _jobApplicationService.GetByIdProjectedAsync<JobApplicationDetailDto>(id);
+            var data = await _jobApplicationService.GetByIdProjectedWithIncludesAsync<JobApplicationDetailDto>(id, j => j.Establishment, j => j.Role);
             var response = new ApiResponse<JobApplicationDetailDto?>(data);
             return Ok(response);
         }

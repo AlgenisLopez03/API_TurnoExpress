@@ -51,6 +51,21 @@ namespace GestorDeTurnos.Persistence.Repositories
                               .FirstOrDefaultAsync();
         }
 
+        public async Task<TDestination?> GetByIdProjectedWithIncludesAsync<TDestination>(int id, params Expression<Func<TEntity, object>>[] includes)
+        {
+            IQueryable<TEntity> query = _dbContext.Set<TEntity>().AsQueryable();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            return await query.Where(x => x.Id.Equals(id))
+                              .AsNoTracking()
+                              .ProjectTo<TDestination>(_configurationProvider)
+                              .FirstOrDefaultAsync();
+        }
+
         public async Task<TEntity?> GetByIdAsync(int id)
         {
             var query = _dbContext.Set<TEntity>().AsQueryable();
