@@ -22,5 +22,6 @@ namespace GestorDeTurnos.Application.Interfaces.Services
         Task UpdateAsync<TSource>(int id, TSource source) where TSource : IHasId<int>;
 
         Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<TDestination?> GetByIdProjectedWithIncludesAsync<TDestination>(int id, params Expression<Func<TEntity, object>>[] includes);
     }
 }

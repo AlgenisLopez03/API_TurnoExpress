@@ -25,5 +25,7 @@ namespace GestorDeTurnos.Application.Interfaces.Repositories
         Task<List<TEntity>> GetAllWithIncludeAsync(ISpecification<TEntity> spec, params Expression<Func<TEntity, object>>[] includes);
 
         Task<List<TEntity>> GetAllWithIncludeAsync(params Expression<Func<TEntity, object>>[] includes);
+        Task<List<TEntity>> ListAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<TDestination?> GetByIdProjectedWithIncludesAsync<TDestination>(int id, params Expression<Func<TEntity, object>>[] includes);
     }
 }

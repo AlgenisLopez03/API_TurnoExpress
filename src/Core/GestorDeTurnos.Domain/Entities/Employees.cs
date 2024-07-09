@@ -8,8 +8,9 @@ namespace GestorDeTurnos.Domain.Entities
         public int EstablishmentId { get; set; }
         public bool Availabe {  get; set; }
 
-        public Establishment Establishment { get; set; }
+        public Establishment? Establishment { get; set; }
         public ICollection<EstablishmentRoles>? EstablishmentRoles { get; set; }
-        public ICollection<Service> Services { get; set; }
+        public ICollection<Service>? Services { get; set; }
+        public ICollection<Appointment>? Appointments { get; set; }
     }
 }

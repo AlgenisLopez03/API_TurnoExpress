@@ -96,6 +96,26 @@ namespace GestorDeTurnos.Application.Services
             return await repository.GetAllProjectedAsync<TDestination>();
         }
 
+
+        /// <summary>
+        /// Retrieves an entity by id and projects it to the specified type with all specified includes.
+        /// </summary>
+        /// <typeparam name="TDestination">The type to which the entity will be projected.</typeparam>
+        /// <param name="id">The identifier of the entity.</param>
+        /// <param name="includes">Expressions representing the properties to include in the query.</param>
+        /// <returns>A projected entity of the specified type if found; otherwise, throws NotFoundException.</returns>
+        public virtual async Task<TDestination?> GetByIdProjectedWithIncludesAsync<TDestination>(int id, params Expression<Func<TEntity, object>>[] includes)
+        {
+            var entity = await repository.GetByIdProjectedWithIncludesAsync<TDestination>(id, includes);
+
+            if (entity is null)
+            {
+                throw new NotFoundException(typeof(TEntity).Name, id);
+            }
+
+            return entity;
+        }
+
         /// <summary>
         /// Retrieves all entities with pagination and projects them to the specified type, based on a given specification.
         /// </summary>

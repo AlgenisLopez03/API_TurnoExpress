@@ -33,7 +33,8 @@ namespace GestorDeTurnos.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ApiResponse<AppointmentDetailDto>>> GetAppointment(int id)
         {
-            var data = await _appointmentService.GetByIdProjectedAsync<AppointmentDetailDto>(id);
+            var data = await _appointmentService.GetByIdProjectedWithIncludesAsync<AppointmentDetailDto>(id, a => a.Status, a => a.Employee, a => a.Establishment, a => a.Service);
+
             var response = new ApiResponse<AppointmentDetailDto?>(data);
             return Ok(response);
         }

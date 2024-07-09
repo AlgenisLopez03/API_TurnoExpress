@@ -1,4 +1,6 @@
-﻿namespace GestorDeTurnos.Application.Dtos.Establishment
+﻿using GestorDeTurnos.Application.Dtos.Service;
+
+namespace GestorDeTurnos.Application.Dtos.Establishment
 {
     public class EstablishmentDetailDto
     {
@@ -9,5 +11,7 @@
         public string WorkingHours { get; set; }
         public string Description { get; set; }
         public string ProfileImage { get; set; }
+
+        public List<ServiceDetailDto> Services { get; set; }
     }
 }

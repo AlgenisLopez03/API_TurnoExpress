@@ -10,8 +10,11 @@ namespace GestorDeTurnos.Domain.Entities
         public int StatusId { get; set; }
         public DateTime Date { get; set; }
         public int Position { get; set; }
-        public Status Status { get; set; }
+        public int EmployeeId { get; set; }
+
+        public Status? Status { get; set; }
         public Establishment? Establishment { get; set; }
         public Service? Service { get; set; }
+        public Employees? Employee { get; set; }
     }
 }

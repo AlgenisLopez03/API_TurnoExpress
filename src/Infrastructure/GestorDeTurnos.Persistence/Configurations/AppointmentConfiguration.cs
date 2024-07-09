@@ -17,29 +17,25 @@ namespace GestorDeTurnos.Persistence.Configurations
                    .HasDefaultValueSql("GetDate()")
                    .IsRequired();
 
-            /*builder.HasOne<CustomIdentityUser>()
-                   .WithMany()
-                   .HasForeignKey(e => e.UserId)
-                   .OnDelete(DeleteBehavior.Restrict);
-            */
-
             builder.HasOne(e => e.Establishment)
                    .WithMany(e => e.Appointments)
                    .HasForeignKey(e => e.EstablishmentId)
-                   .OnDelete(DeleteBehavior.Cascade);   
+                   .OnDelete(DeleteBehavior.Cascade);
 
-
+            builder.HasOne(e => e.Employee)
+                   .WithMany(e => e.Appointments)
+                   .HasForeignKey(a => a.EmployeeId)
+                   .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(e => e.Service)
                    .WithMany(e => e.Appointments)
                    .HasForeignKey(e => e.ServiceId)
                    .OnDelete(DeleteBehavior.Cascade);
 
-
             builder.HasOne(e => e.Status)
-                .WithMany(e => e.Appointments)
-                .HasForeignKey(e => e.StatusId)
-                .OnDelete(DeleteBehavior.Cascade);
+                    .WithMany(e => e.Appointments)
+                    .HasForeignKey(e => e.StatusId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
         }
     }

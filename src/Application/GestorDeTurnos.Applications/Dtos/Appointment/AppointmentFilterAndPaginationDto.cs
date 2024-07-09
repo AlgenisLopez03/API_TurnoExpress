@@ -1,10 +1,14 @@
-﻿using GestorDeTurnos.Application.Pagination;
+﻿using GestorDeTurnos.Application.Enums;
+using GestorDeTurnos.Application.Pagination;
 
 namespace GestorDeTurnos.Application.Dtos.Appointment
 {
     public class AppointmentFilterAndPaginationDto : PaginationBase
     {
-        public string? Service { get; set; }
-        public string? Establishment { get; set; }
+        public string? UserId {  get; set; }
+        public int? EmployeeId { get; set; }
+        public int? ServiceId { get; set; }
+        public int? EstablishmentId { get; set; }
+        public StatusType? Status { get; set; }
     }
 }
