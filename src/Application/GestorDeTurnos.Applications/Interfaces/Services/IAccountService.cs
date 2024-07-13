@@ -14,5 +14,6 @@ namespace GestorDeTurnos.Application.Interfaces.Services
         Task<ApiResponse> CreateUserAccountAsync(UserCreateRequest userCreateRequest);
         Task<ApiResponse> UpdateUserAccountAsync(UserUpdateRequest userUpdateRequest);
         Task EndUserSessionAsync();
+        Task<ApiResponse<List<UserDetailResponse>>> GetUsersAsync(string userName = null);
     }
 }
