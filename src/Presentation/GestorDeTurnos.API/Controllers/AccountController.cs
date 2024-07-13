@@ -80,6 +80,18 @@ namespace GestorDeTurnos.API.Controllers
         }
 
         /// <summary>
+        /// Retrieves a user's details based on their username.
+        /// </summary>
+        /// <param name="userName">The username of the user.</param>
+        /// <returns>An ApiResponse containing the user's detail response data.</returns>
+        [HttpGet("users")]
+        public async Task<ActionResult<ApiResponse<UserDetailResponse>>> GetUserByUsers(string username = null)
+        {
+            var response = await _accountService.GetUsersAsync(username);
+            return Ok(response);
+        }
+
+        /// <summary>
         /// Asynchronously registers a new user.
         /// </summary>
         /// <param name="request">The user creation request details.</param>

@@ -12,6 +12,7 @@ using GestorDeTurnos.Identity.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Data;
@@ -169,11 +170,49 @@ namespace GestorDeTurnos.Identity.Services
         }
 
         /// <summary>
+        /// Retrieves user details based on the provided username. If no username is provided, retrieves all users.
+        /// </summary>
+        /// <param name="userName">The username of the user to filter by. If null or empty, retrieves all users.</param>
+        /// <returns>An ApiResponse containing a list of UserDetailResponse with the details of the retrieved users.</returns>
+        public async Task<ApiResponse<List<UserDetailResponse>>> GetUsersAsync(string? userName = null)
+        {
+            var users = string.IsNullOrEmpty(userName)
+                ? await _userManager.Users.ToListAsync()
+                : await _userManager.Users
+                    .Where(u => u.UserName.Contains(userName))
+                    .ToListAsync();
+
+            if (users == null || !users.Any())
+            {
+                throw new BadRequestException($"No accounts found with username containing: {userName ?? "any username"}.");
+            }
+
+            var userDetailTasks = users.Select(async user => new UserDetailResponse()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                ProfileImage = user.ProfileImage,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Roles = (List<string>)await _userManager.GetRolesAsync(user)
+            });
+
+            var userDetails = await Task.WhenAll(userDetailTasks);
+
+            var response = new ApiResponse<List<UserDetailResponse>>(userDetails.ToList());
+
+            response.Message = "Users retrieved successfully.";
+
+            return response;
+        }
+
+        /// <summary>
         /// Registers a new user into the system.
         /// </summary>
         /// <param name="userCreateRequest">The user registration data.</param>
         /// <returns>An ApiResponse indicating the result of the registration process.</returns>
-
         public async Task<ApiResponse> CreateUserAccountAsync(UserCreateRequest userCreateRequest)
         {
             var response = new ApiResponse();
@@ -215,7 +254,6 @@ namespace GestorDeTurnos.Identity.Services
         /// </summary>
         /// <param name="userUpdateRequest">The user data to update.</param>
         /// <returns>An ApiResponse indicating the result of the updating process.</returns>
-
         public async Task<ApiResponse> UpdateUserAccountAsync(UserUpdateRequest userUpdateRequest)
         {
             var response = new ApiResponse();
