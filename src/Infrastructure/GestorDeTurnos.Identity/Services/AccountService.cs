@@ -186,22 +186,27 @@ namespace GestorDeTurnos.Identity.Services
             {
                 throw new BadRequestException($"No accounts found with username containing: {userName ?? "any username"}.");
             }
+            var userDetails = new List<UserDetailResponse>();
 
-            var userDetailTasks = users.Select(async user => new UserDetailResponse()
+            foreach (var user in users)
             {
-                Id = user.Id,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                UserName = user.UserName,
-                ProfileImage = user.ProfileImage,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
-                Roles = (List<string>)await _userManager.GetRolesAsync(user)
-            });
+                var roles = await _userManager.GetRolesAsync(user).ConfigureAwait(false);
+                var userDetailsResponse = new UserDetailResponse
+                {
+                    Id = user.Id,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    UserName = user.UserName,
+                    ProfileImage = user.ProfileImage,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
+                    Roles = roles.ToList()
+                };
+                userDetails.Add(userDetailsResponse);
+            }
 
-            var userDetails = await Task.WhenAll(userDetailTasks);
+            var response = new ApiResponse<List<UserDetailResponse>>(userDetails);
 
-            var response = new ApiResponse<List<UserDetailResponse>>(userDetails.ToList());
 
             response.Message = "Users retrieved successfully.";
 
