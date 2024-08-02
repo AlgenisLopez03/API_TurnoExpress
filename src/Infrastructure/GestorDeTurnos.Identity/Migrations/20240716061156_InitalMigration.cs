@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GestorDeTurnos.Identity.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitalMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -166,9 +166,9 @@ namespace GestorDeTurnos.Identity.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "31d211a3-f5cf-4fa1-b615-265d63f00646", null, "Empleado", "EMPLEADO" },
-                    { "96002ed6-73e4-4355-9b22-6b7d4c6bed53", null, "Cliente", "CLIENTE" },
-                    { "d9b88570-5675-4112-afb5-302a6e40eb80", null, "Propietario", "PROPIETARIO" }
+                    { "03427e76-9893-4f3c-9352-132ccdb6157b", null, "Propietario", "PROPIETARIO" },
+                    { "8be885f5-c3cf-4ace-9cca-5400c311d5dd", null, "Cliente", "CLIENTE" },
+                    { "c6c3056f-9a14-4cec-94cb-a696202f666a", null, "Empleado", "EMPLEADO" }
                 });
 
             migrationBuilder.InsertData(
@@ -176,9 +176,9 @@ namespace GestorDeTurnos.Identity.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfileImage", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "7bfc5c75-a9fa-4623-8e0c-4c1a2dc8cbda", 0, "3ae06251-fcac-4477-8344-761a88359270", "cliente@gmail.com", true, "John", "Tie", false, null, "CLIENTE@GMAIL.COM", "CLIENTE", "AQAAAAIAAYagAAAAEMYf6NtyHMjvNWl3gMZaGhuixSTbmYj1UIh47UBqwAGXRbCMp8hQQdye8T0j2BKa9w==", "000-000-0000", true, "", "7a5c3f6b-b7de-4163-b92a-dd2aa800e568", false, "cliente" },
-                    { "95987a31-7bd5-4bb0-a888-f2cc06108ec1", 0, "8be51a70-45c7-41a2-abb6-c4da6f570dda", "empleado@gmail.com", true, "John", "Smith", false, null, "EMPLEADO@GMAIL.COM", "EMPLEADO", "AQAAAAIAAYagAAAAEAxLFxvCrGChB03uXwDK4dKgm5o20hUcj548OV90rjbQVYgAtwsRdAcRPkZvVagHSQ==", "000-000-0002", true, "", "5641b136-e856-48a0-aa05-dd1f36cf05d2", false, "empleado" },
-                    { "ec3cd357-0298-4602-abb1-5effcf233389", 0, "f5592abb-fa47-4dcc-b982-19b2e0af8a55", "propietario@gmail.com", true, "John", "Doe", false, null, "PROPIETARIO@GMAIL.COM", "PROPIETARIO", "AQAAAAIAAYagAAAAEDMYgJH+FSW2hwytLjZVkDxD4JNaun88qWykBB3oMtWDPJq3rY2xglHEc/EmvZqYTQ==", "000-000-0001", true, "", "56f125f2-2e9f-43ed-a9d4-22f0f6806eb0", false, "propietario" }
+                    { "1cd4cf53-357b-4381-9eed-322ef32d0407", 0, "4d7e4027-7513-4e1b-946a-75f4240aa2e5", "cliente@gmail.com", true, "John", "Tie", false, null, "CLIENTE@GMAIL.COM", "CLIENTE", "AQAAAAIAAYagAAAAECNq2PqV0O2uDO1FwRoDUIyCw8xYCFDi/foiHb8VgQSXIAyloNZqfmY8iY/sMt9aAw==", "000-000-0000", true, "", "2dd66241-4668-4531-9ed8-53e0d01122e8", false, "cliente" },
+                    { "61219f5f-3fbb-45ed-b34f-93366ef5ebd8", 0, "656f593c-ef22-4a1a-8df5-7be28ccbcab4", "empleado@gmail.com", true, "John", "Smith", false, null, "EMPLEADO@GMAIL.COM", "EMPLEADO", "AQAAAAIAAYagAAAAEOgEU+AyH9NFZdu4UZ9YOvfpuN1Bd63ZASmF1X8XrHqAAOfkWAaWbrHodO17srVaYA==", "000-000-0002", true, "", "0b45e79a-94c2-4f17-aba6-86e71bf6b5e6", false, "empleado" },
+                    { "91f94729-ca07-470a-9138-0ed15a0efe68", 0, "3c219e73-d19e-4b52-b51a-f8dd284d3e03", "propietario@gmail.com", true, "John", "Doe", false, null, "PROPIETARIO@GMAIL.COM", "PROPIETARIO", "AQAAAAIAAYagAAAAEIFfJXSTCDiCWSO2ryqabovGx58KmqdZ2nw5a5TJ18g7zLgrvq59Jc7T6cGU2yUNhQ==", "000-000-0001", true, "", "b7028368-11cd-41f5-9955-252d47f5879d", false, "propietario" }
                 });
 
             migrationBuilder.InsertData(
@@ -186,11 +186,11 @@ namespace GestorDeTurnos.Identity.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "96002ed6-73e4-4355-9b22-6b7d4c6bed53", "7bfc5c75-a9fa-4623-8e0c-4c1a2dc8cbda" },
-                    { "31d211a3-f5cf-4fa1-b615-265d63f00646", "95987a31-7bd5-4bb0-a888-f2cc06108ec1" },
-                    { "96002ed6-73e4-4355-9b22-6b7d4c6bed53", "95987a31-7bd5-4bb0-a888-f2cc06108ec1" },
-                    { "96002ed6-73e4-4355-9b22-6b7d4c6bed53", "ec3cd357-0298-4602-abb1-5effcf233389" },
-                    { "d9b88570-5675-4112-afb5-302a6e40eb80", "ec3cd357-0298-4602-abb1-5effcf233389" }
+                    { "8be885f5-c3cf-4ace-9cca-5400c311d5dd", "1cd4cf53-357b-4381-9eed-322ef32d0407" },
+                    { "8be885f5-c3cf-4ace-9cca-5400c311d5dd", "61219f5f-3fbb-45ed-b34f-93366ef5ebd8" },
+                    { "c6c3056f-9a14-4cec-94cb-a696202f666a", "61219f5f-3fbb-45ed-b34f-93366ef5ebd8" },
+                    { "03427e76-9893-4f3c-9352-132ccdb6157b", "91f94729-ca07-470a-9138-0ed15a0efe68" },
+                    { "8be885f5-c3cf-4ace-9cca-5400c311d5dd", "91f94729-ca07-470a-9138-0ed15a0efe68" }
                 });
 
             migrationBuilder.CreateIndex(
