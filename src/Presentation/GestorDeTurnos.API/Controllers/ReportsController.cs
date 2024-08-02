@@ -6,6 +6,7 @@ using GestorDeTurnos.Application.Specification;
 using GestorDeTurnos.Application.Wrappers;
 using GestorDeTurnos.Domain.Entities;
 using GestorDeTurnos.Persistence.DbContexts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestorDeTurnos.API.Controllers
@@ -13,6 +14,7 @@ namespace GestorDeTurnos.API.Controllers
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [Authorize]
     public class ReportsController : ControllerBase
     {
         private readonly IReportService _reportService;

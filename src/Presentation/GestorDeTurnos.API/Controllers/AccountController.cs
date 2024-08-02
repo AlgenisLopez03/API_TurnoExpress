@@ -7,6 +7,7 @@ using GestorDeTurnos.Application.Interfaces.Services;
 using GestorDeTurnos.Application.Services;
 using GestorDeTurnos.Application.Wrappers;
 using GestorDeTurnos.Identity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestorDeTurnos.API.Controllers
@@ -17,6 +18,7 @@ namespace GestorDeTurnos.API.Controllers
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [Authorize]
     public class AccountController : ControllerBase
     {
         private readonly IAccountService _accountService;
@@ -37,6 +39,7 @@ namespace GestorDeTurnos.API.Controllers
         /// </summary>
         /// <param name="request">The login request details.</param>
         /// <returns>The login response.</returns>
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<ApiResponse<LoginResponse>>> LoginAsync(LoginRequest request)
         {
@@ -96,6 +99,7 @@ namespace GestorDeTurnos.API.Controllers
         /// </summary>
         /// <param name="request">The user creation request details.</param>
         /// <returns>The registration response.</returns>
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult<ApiResponse>> RegisterAsync(UserCreateRequest request)
         {

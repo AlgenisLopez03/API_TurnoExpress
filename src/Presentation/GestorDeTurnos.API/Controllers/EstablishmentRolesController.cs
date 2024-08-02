@@ -4,6 +4,7 @@ using GestorDeTurnos.Application.Interfaces.Services;
 using GestorDeTurnos.Application.Pagination;
 using GestorDeTurnos.Application.Specification;
 using GestorDeTurnos.Application.Wrappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace GestorDeTurnos.API.Controllers
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [Authorize]
     public class EstablishmentRolesController : ControllerBase
     {
         private readonly IEstablishmentRoleService _service;
