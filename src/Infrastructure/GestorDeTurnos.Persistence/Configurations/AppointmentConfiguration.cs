@@ -25,7 +25,8 @@ namespace GestorDeTurnos.Persistence.Configurations
             builder.HasOne(e => e.Employee)
                    .WithMany(e => e.Appointments)
                    .HasForeignKey(a => a.EmployeeId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                   .OnDelete(DeleteBehavior.Cascade)
+                   .IsRequired(false);
 
             builder.HasOne(e => e.Service)
                    .WithMany(e => e.Appointments)

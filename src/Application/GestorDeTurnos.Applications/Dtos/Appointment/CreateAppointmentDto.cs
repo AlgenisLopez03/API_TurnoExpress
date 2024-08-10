@@ -13,8 +13,7 @@ namespace GestorDeTurnos.Application.Dtos.Appointment
         [Required]
         public int ServiceId { get; set; }
 
-        [Required]
-        public int EmployeeId { get; set; }
+        public int? EmployeeId { get; set; };
 
         [Required]
         public int StatusId { get; set; }
