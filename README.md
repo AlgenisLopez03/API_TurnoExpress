@@ -6,10 +6,19 @@ Componentes del Sistema
 Web: Implementado con React.js para la interfaz de usuario en navegadores. Esto proporciona una experiencia de usuario moderna, rápida y adaptable.
 Móvil: Desarrollado en Flutter para garantizar que la aplicación sea accesible desde dispositivos móviles, con una interfaz coherente en distintas plataformas.
 2. Back-end
-Desarrollado en .NET 8 API con C#, el back-end maneja toda la lógica del negocio, así como la gestión de datos. Utiliza una arquitectura basada en servicios, lo que asegura una estructura modular y escalable.
-Base de datos: Se utiliza una base de datos relacional que almacena toda la información clave, como usuarios, establecimientos, servicios, empleados y citas. La estructura está optimizada para gestionar de manera eficiente las relaciones entre estas entidades.
+Desarrollado en C# utilizando .NET 8 API, el back-end maneja toda la lógica del negocio y la gestión de datos. Utiliza una arquitectura basada en servicios, lo que asegura una estructura modular y escalable.
+
+Base de datos: Se emplea una base de datos relacional que almacena toda la información clave, como:
+
+Usuarios
+Establecimientos
+Servicios
+Empleados
+Citas
+La estructura está optimizada para gestionar de manera eficiente las relaciones entre estas entidades.
+
 Justificación de la Propuesta
-La solución fue elegida debido a su capacidad para integrar un sistema de gestión de citas completo, que pueda ser usado en diversas plataformas. Las tecnologías empleadas proporcionan varias ventajas:
+La solución fue elegida debido a su capacidad para integrar un sistema de gestión de citas completo, que puede ser usado en diversas plataformas. Las tecnologías empleadas proporcionan varias ventajas:
 
 React.js y Flutter permiten un desarrollo ágil y adaptable a distintos dispositivos.
 .NET 8 API ofrece un rendimiento robusto, confiable y escalable, asegurando que la aplicación pueda crecer sin comprometer el rendimiento.
