@@ -6,12 +6,14 @@ using GestorDeTurnos.Application.Wrappers;
 using GestorDeTurnos.Application.Specification;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestorDeTurnos.API.Controllers
 {
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [Authorize]
     public class EstablishmentTypesController : ControllerBase
     {
         private readonly IEstablishmentTypeService _service;

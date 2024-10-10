@@ -6,6 +6,7 @@ using GestorDeTurnos.Application.Specification;
 using GestorDeTurnos.Application.Wrappers;
 using GestorDeTurnos.Domain.Entities;
 using GestorDeTurnos.Persistence.DbContexts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -14,6 +15,7 @@ namespace GestorDeTurnos.API.Controllers
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [Authorize]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;

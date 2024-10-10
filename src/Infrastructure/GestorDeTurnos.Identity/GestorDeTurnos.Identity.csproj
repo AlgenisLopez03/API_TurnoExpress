@@ -20,8 +20,4 @@
     <ProjectReference Include="..\..\..\src\Application\GestorDeTurnos.Applications\GestorDeTurnos.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

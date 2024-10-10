@@ -98,9 +98,9 @@ namespace GestorDeTurnos.Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ec3cd357-0298-4602-abb1-5effcf233389",
+                            Id = "91f94729-ca07-470a-9138-0ed15a0efe68",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f5592abb-fa47-4dcc-b982-19b2e0af8a55",
+                            ConcurrencyStamp = "3c219e73-d19e-4b52-b51a-f8dd284d3e03",
                             Email = "propietario@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "John",
@@ -108,19 +108,19 @@ namespace GestorDeTurnos.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "PROPIETARIO@GMAIL.COM",
                             NormalizedUserName = "PROPIETARIO",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDMYgJH+FSW2hwytLjZVkDxD4JNaun88qWykBB3oMtWDPJq3rY2xglHEc/EmvZqYTQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIFfJXSTCDiCWSO2ryqabovGx58KmqdZ2nw5a5TJ18g7zLgrvq59Jc7T6cGU2yUNhQ==",
                             PhoneNumber = "000-000-0001",
                             PhoneNumberConfirmed = true,
                             ProfileImage = "",
-                            SecurityStamp = "56f125f2-2e9f-43ed-a9d4-22f0f6806eb0",
+                            SecurityStamp = "b7028368-11cd-41f5-9955-252d47f5879d",
                             TwoFactorEnabled = false,
                             UserName = "propietario"
                         },
                         new
                         {
-                            Id = "95987a31-7bd5-4bb0-a888-f2cc06108ec1",
+                            Id = "61219f5f-3fbb-45ed-b34f-93366ef5ebd8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8be51a70-45c7-41a2-abb6-c4da6f570dda",
+                            ConcurrencyStamp = "656f593c-ef22-4a1a-8df5-7be28ccbcab4",
                             Email = "empleado@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "John",
@@ -128,19 +128,19 @@ namespace GestorDeTurnos.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "EMPLEADO@GMAIL.COM",
                             NormalizedUserName = "EMPLEADO",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAxLFxvCrGChB03uXwDK4dKgm5o20hUcj548OV90rjbQVYgAtwsRdAcRPkZvVagHSQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOgEU+AyH9NFZdu4UZ9YOvfpuN1Bd63ZASmF1X8XrHqAAOfkWAaWbrHodO17srVaYA==",
                             PhoneNumber = "000-000-0002",
                             PhoneNumberConfirmed = true,
                             ProfileImage = "",
-                            SecurityStamp = "5641b136-e856-48a0-aa05-dd1f36cf05d2",
+                            SecurityStamp = "0b45e79a-94c2-4f17-aba6-86e71bf6b5e6",
                             TwoFactorEnabled = false,
                             UserName = "empleado"
                         },
                         new
                         {
-                            Id = "7bfc5c75-a9fa-4623-8e0c-4c1a2dc8cbda",
+                            Id = "1cd4cf53-357b-4381-9eed-322ef32d0407",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3ae06251-fcac-4477-8344-761a88359270",
+                            ConcurrencyStamp = "4d7e4027-7513-4e1b-946a-75f4240aa2e5",
                             Email = "cliente@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "John",
@@ -148,11 +148,11 @@ namespace GestorDeTurnos.Identity.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "CLIENTE@GMAIL.COM",
                             NormalizedUserName = "CLIENTE",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMYf6NtyHMjvNWl3gMZaGhuixSTbmYj1UIh47UBqwAGXRbCMp8hQQdye8T0j2BKa9w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECNq2PqV0O2uDO1FwRoDUIyCw8xYCFDi/foiHb8VgQSXIAyloNZqfmY8iY/sMt9aAw==",
                             PhoneNumber = "000-000-0000",
                             PhoneNumberConfirmed = true,
                             ProfileImage = "",
-                            SecurityStamp = "7a5c3f6b-b7de-4163-b92a-dd2aa800e568",
+                            SecurityStamp = "2dd66241-4668-4531-9ed8-53e0d01122e8",
                             TwoFactorEnabled = false,
                             UserName = "cliente"
                         });
@@ -187,19 +187,19 @@ namespace GestorDeTurnos.Identity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "96002ed6-73e4-4355-9b22-6b7d4c6bed53",
+                            Id = "8be885f5-c3cf-4ace-9cca-5400c311d5dd",
                             Name = "Cliente",
                             NormalizedName = "CLIENTE"
                         },
                         new
                         {
-                            Id = "d9b88570-5675-4112-afb5-302a6e40eb80",
+                            Id = "03427e76-9893-4f3c-9352-132ccdb6157b",
                             Name = "Propietario",
                             NormalizedName = "PROPIETARIO"
                         },
                         new
                         {
-                            Id = "31d211a3-f5cf-4fa1-b615-265d63f00646",
+                            Id = "c6c3056f-9a14-4cec-94cb-a696202f666a",
                             Name = "Empleado",
                             NormalizedName = "EMPLEADO"
                         });
@@ -294,28 +294,28 @@ namespace GestorDeTurnos.Identity.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "ec3cd357-0298-4602-abb1-5effcf233389",
-                            RoleId = "96002ed6-73e4-4355-9b22-6b7d4c6bed53"
+                            UserId = "91f94729-ca07-470a-9138-0ed15a0efe68",
+                            RoleId = "8be885f5-c3cf-4ace-9cca-5400c311d5dd"
                         },
                         new
                         {
-                            UserId = "ec3cd357-0298-4602-abb1-5effcf233389",
-                            RoleId = "d9b88570-5675-4112-afb5-302a6e40eb80"
+                            UserId = "91f94729-ca07-470a-9138-0ed15a0efe68",
+                            RoleId = "03427e76-9893-4f3c-9352-132ccdb6157b"
                         },
                         new
                         {
-                            UserId = "95987a31-7bd5-4bb0-a888-f2cc06108ec1",
-                            RoleId = "96002ed6-73e4-4355-9b22-6b7d4c6bed53"
+                            UserId = "61219f5f-3fbb-45ed-b34f-93366ef5ebd8",
+                            RoleId = "8be885f5-c3cf-4ace-9cca-5400c311d5dd"
                         },
                         new
                         {
-                            UserId = "95987a31-7bd5-4bb0-a888-f2cc06108ec1",
-                            RoleId = "31d211a3-f5cf-4fa1-b615-265d63f00646"
+                            UserId = "61219f5f-3fbb-45ed-b34f-93366ef5ebd8",
+                            RoleId = "c6c3056f-9a14-4cec-94cb-a696202f666a"
                         },
                         new
                         {
-                            UserId = "7bfc5c75-a9fa-4623-8e0c-4c1a2dc8cbda",
-                            RoleId = "96002ed6-73e4-4355-9b22-6b7d4c6bed53"
+                            UserId = "1cd4cf53-357b-4381-9eed-322ef32d0407",
+                            RoleId = "8be885f5-c3cf-4ace-9cca-5400c311d5dd"
                         });
                 });
 

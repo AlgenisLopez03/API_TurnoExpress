@@ -7,6 +7,7 @@ namespace GestorDeTurnos.API.Controllers
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+
     public class ImagesController : ControllerBase
     {
         private readonly string _root = Path.Combine(Directory.GetCurrentDirectory(), Paths.Uploads);
