@@ -1,22 +1,28 @@
 using GestorDeTurnos.API.Middlewares;
-using GestorDeTurnos.Application;
 using GestorDeTurnos.Application.Setups;
+using GestorDeTurnos.Application;
 using GestorDeTurnos.Identity;
 using GestorDeTurnos.Persistence;
 using Serilog;
-using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var configuration = builder.Configuration;
+// Configura la política CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000") // Origen permitido
+                   .AllowAnyHeader()   // Permite cualquier encabezado
+                   .AllowAnyMethod();  // Permite cualquier método
+        });
+});
 
-var cultureInfo = CultureInfo.InvariantCulture;
-CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
-
-builder.Services.AddApplicationLayerServices(configuration);
-builder.Services.AddPersistenceLayerServices(configuration);
-builder.Services.AddIdentityLayerServices(configuration);
+// Agrega otros servicios
+builder.Services.AddApplicationLayerServices(builder.Configuration);
+builder.Services.AddPersistenceLayerServices(builder.Configuration);
+builder.Services.AddIdentityLayerServices(builder.Configuration);
 builder.Host.UseSerilog(SeriLogSetup.Configure);
 
 var app = builder.Build();
@@ -29,7 +35,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMiddleware<ExceptionMiddleware>();
-app.UseCors("AllowAll");
+app.UseCors("AllowReactApp"); // Usa la política CORS definida
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
