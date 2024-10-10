@@ -1,5 +1,5 @@
 # Gestor-de-Turnos
-Gestor de Turnos de la asignatura Proyecto Final
+Gestor de Turnos video de backed
 ![image](https://github.com/user-attachments/assets/2c46ef91-c569-4bd7-99eb-29f66e304853)
 
 
